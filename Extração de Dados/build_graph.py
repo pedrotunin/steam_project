@@ -1,19 +1,20 @@
 import os
 import numpy as np
 
-files = os.listdir("/home/tunin/projeto_cr/Extração de Dados/api_responses(appids_new)/")
-graph = np.zeros((8300, 8300), dtype=int)
+files = os.listdir("/home/ufabc/steam_project/Extração de Dados/api_responses(appids_new)/")
+graph = np.zeros((10000, 10000), dtype=int)
 dicionario = []
 
+contador = 0
 cont = 0
 indicex = 0
 indicey = 0
 
-arq = open("/home/tunin/projeto_cr/Extração de Dados/graph.txt", "w+")
-arq_relaciona = open("/home/tunin/projeto_cr/Extração de Dados/relationships.txt", "w+")
+arq = open("/home/ufabc/steam_project/Extração de Dados/graph.txt", "w+")
+arq_relaciona = open("/home/ufabc/steam_project/Extração de Dados/relationships.txt", "w+")
 
 for i in range(500):
-    read_arq = open("/home/tunin/projeto_cr/Extração de Dados/api_responses(appids_new)/" + files[cont], "r+")
+    read_arq = open("/home/ufabc/steam_project/Extração de Dados/api_responses(appids_new)/" + files[cont], "r+")
     read = []
     read = read_arq.readlines()
     
@@ -23,6 +24,7 @@ for i in range(500):
         if readx in dicionario:
             indicex = dicionario.index(readx)
         else:
+            contador = contador + 1
             dicionario.append(readx)
             indicex = dicionario.index(readx)
         
@@ -32,21 +34,30 @@ for i in range(500):
             if ready in dicionario:
                 indicey = dicionario.index(ready)
             else:
+                contador = contador + 1
                 dicionario.append(ready)
                 indicey = dicionario.index(ready)
             
             graph[indicex][indicey] = graph[indicex][indicey] + 1
 
     read_arq.close()
+    print(str(cont) + " = " + str(contador))
     cont = cont + 1
 
-for i in range(8300):
-    for j in range(8300):
+cont = 0
+for i in dicionario:
+    arq.write(str(dicionario[cont] + " "))
+    cont = cont + 1
+
+arq.write("\n")
+
+for i in range(len(dicionario)):
+    arq.write(str(dicionario[i]) + " ")	    
+    for j in range(len(dicionario)):
         arq.write(str(graph[i][j]) + " ")
     arq.write("\n")
 
 arq.close()
 
 arq_relaciona.write(str(dicionario))
-arq_relaciona.close()
-        
+arq_relaciona.close()     
