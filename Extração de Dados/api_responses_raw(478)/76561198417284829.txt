@@ -1,0 +1,1 @@
+{"response":{"game_count":2,"games":[{"appid":730,"playtime_2weeks":2849,"playtime_forever":91805},{"appid":335300,"playtime_forever":5983}]}}

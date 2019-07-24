@@ -1,0 +1,1 @@
+{"response":{"game_count":7,"games":[{"appid":313830,"playtime_forever":3},{"appid":539720,"playtime_forever":0},{"appid":218620,"playtime_forever":0},{"appid":368420,"playtime_forever":0},{"appid":368230,"playtime_forever":0},{"appid":490220,"playtime_forever":0},{"appid":730,"playtime_2weeks":1,"playtime_forever":35}]}}
